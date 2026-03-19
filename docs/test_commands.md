@@ -4,12 +4,12 @@
 # Registration Test
 curl -X POST http://localhost:3000/user/register \
   -H "Content-Type: application/json" \
-  -d '{"email":"test@test.com","password":"123456"}'
+  -d '{"email":"test@test.com","password":"1234567890"}'
 
 # Login Test
 curl -X POST http://localhost:3000/user/login \
   -H "Content-Type: application/json" \
-  -d '{"email":"test@test.com","password":"123456"}'
+  -d '{"email":"test@test.com","password":"1234567890"}'
 
 ------------------------------
 
@@ -59,7 +59,7 @@ curl http://localhost:3000/task/1
 
 # Update Task (can update only specific fields)
 # Update title and status
-curl -X PATCH http://localhost:3000/task/2 \
+curl -X PATCH http://localhost:3000/task/1 \
   -H "Content-Type: application/json" \
   -d '{
     "title": "New title",
@@ -67,14 +67,14 @@ curl -X PATCH http://localhost:3000/task/2 \
   }'
 
 # Or update only assigned user
-curl -X PATCH http://localhost:3000/task/2 \
+curl -X PATCH http://localhost:3000/task/1 \
   -H "Content-Type: application/json" \
   -d '{
     "assignedUserId": 3
   }'
 
 # Delete Task
-curl -X DELETE http://localhost:3000/task/2
+curl -X DELETE http://localhost:3000/task/1
 
 ------------------------------
 
@@ -89,7 +89,7 @@ curl -X POST http://localhost:3000/comment \
   }'
 
 # Get Comments for a Task
-curl http://localhost:3000/comment/task/2
+curl http://localhost:3000/comment/task/1
 
 # Delete Comment
 curl -X DELETE http://localhost:3000/comment/1
