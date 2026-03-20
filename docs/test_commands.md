@@ -1,4 +1,3 @@
-
 # User Module
 
 # Registration Test
@@ -10,6 +9,26 @@ curl -X POST http://localhost:3000/user/register \
 curl -X POST http://localhost:3000/user/login \
   -H "Content-Type: application/json" \
   -d '{"email":"test@test.com","password":"1234567890"}'
+
+# Find user by email
+curl -X GET http://localhost:3000/user/email/test1@test.com
+
+# Find user by id
+curl -X GET http://localhost:3000/user/1
+
+# Get all users
+curl -X GET http://localhost:3000/user
+
+# Update user
+curl -X PATCH http://localhost:3000/user/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "New Name",
+    "email": "newemail@example.com"
+  }'
+
+# Delete user
+curl -X DELETE http://localhost:3000/user/1
 
 ------------------------------
 
