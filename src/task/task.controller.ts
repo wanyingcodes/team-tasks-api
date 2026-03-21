@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from 
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './task.dto/create.task.dto';
 import { UpdateTaskDto } from './task.dto/update.task.dto';
+import { Public } from '../auth/decorators/public.decorator';
 
 @Controller('task')
 export class TaskController {
@@ -12,6 +13,7 @@ export class TaskController {
     return this.taskService.create(1, dto);
   }
 
+  @Public()
   @Get('project/:projectId')
   findByProject(@Param('projectId', ParseIntPipe) projectId: number) {
     return this.taskService.findAll(projectId);
@@ -22,6 +24,7 @@ export class TaskController {
     return this.taskService.findMyTasks(1);
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.taskService.findOne(id, 1);

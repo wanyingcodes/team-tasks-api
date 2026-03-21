@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './comment.dto/create.comment.dto';
+import { Public } from '../auth/decorators/public.decorator';
 
 @Controller('comment')
 export class CommentController {
@@ -11,6 +12,7 @@ export class CommentController {
     return this.commentService.create(1, dto);
   }
 
+  @Public()
   @Get('task/:taskId')
   findByTask(@Param('taskId', ParseIntPipe) taskId: number) {
     return this.commentService.findAll(taskId);

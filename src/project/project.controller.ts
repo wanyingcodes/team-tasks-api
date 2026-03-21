@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from 
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './project.dto/create.project.dto';
 import { UpdateProjectDto } from './project.dto/update.project.dto';
+import { Public } from '../auth/decorators/public.decorator';
 
 @Controller('project')
 export class ProjectController {
@@ -12,11 +13,13 @@ export class ProjectController {
     return this.projectService.create(1, dto);
   }
 
+  @Public()
   @Get()
   findAll() {
     return this.projectService.findAll();
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.projectService.findOne(id);
