@@ -40,12 +40,9 @@ export class TaskService {
     });
   }
 
-  async findOne(id: number, projectId: number) {
-    const task = await this.prisma.task.findFirst({
-      where: {
-        id,
-        projectId,
-      },
+  async findOne(id: number) {
+    const task = await this.prisma.task.findUnique({
+      where: { id },
     });
     if (!task) {
       throw new NotFoundException('Task not found');
@@ -53,11 +50,15 @@ export class TaskService {
     return task;
   }
 
-  async update(id: number, projectId: number, dto: UpdateTaskDto) {
-    const task = await this.prisma.task.findFirst({
-      where: { id, projectId },
+  async update(id: number, userId: number, dto: UpdateTaskDto) {
+    const task = await this.prisma.task.findUnique({
+      where: { id },
+      include: { project: true },
     });
     if (!task) {
+      throw new NotFoundException('Task not found');
+    }
+    if (task.project.userId !== userId) {
       throw new NotFoundException('Task not found or you do not have permission');
     }
     return this.prisma.task.update({
@@ -71,11 +72,15 @@ export class TaskService {
     });
   }
 
-  async remove(id: number, projectId: number) {
-    const task = await this.prisma.task.findFirst({
-      where: { id, projectId },
+  async remove(id: number, userId: number) {
+    const task = await this.prisma.task.findUnique({
+      where: { id },
+      include: { project: true },
     });
     if (!task) {
+      throw new NotFoundException('Task not found');
+    }
+    if (task.project.userId !== userId) {
       throw new NotFoundException('Task not found or you do not have permission');
     }
     await this.prisma.task.delete({

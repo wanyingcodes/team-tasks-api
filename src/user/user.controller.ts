@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch } from '@nest
 import { UserService } from './user.service';
 import { UpdateUserDto } from './user.dto/user.update.dto';
 import { Public } from '../auth/decorators/public.decorator';
+import { CurrentUserId } from 'src/auth/decorators/current.user.decorator';
 
 @Controller('user')
 export class UserController {
@@ -29,12 +30,16 @@ export class UserController {
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateUserDto,
+    @CurrentUserId() currentUser: any,
   ) {
-    return this.userService.update(id, 1, dto);
+    return this.userService.update(id, currentUser.id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.userService.remove(id, 1);
+  remove(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUserId() currentUser: any,
+  ) {
+    return this.userService.remove(id, currentUser.id);
   }
 }

@@ -3,14 +3,15 @@ import { TaskService } from './task.service';
 import { CreateTaskDto } from './task.dto/create.task.dto';
 import { UpdateTaskDto } from './task.dto/update.task.dto';
 import { Public } from '../auth/decorators/public.decorator';
+import { CurrentUserId } from '../auth/decorators/current.user.decorator';
 
 @Controller('task')
 export class TaskController {
   constructor(private taskService: TaskService) {}
 
   @Post()
-  createTask(@Body() dto: CreateTaskDto) {
-    return this.taskService.create(1, dto);
+  createTask(@Body() dto: CreateTaskDto, @CurrentUserId() userId: any) {
+    return this.taskService.create(userId.id, dto);
   }
 
   @Public()
@@ -20,26 +21,30 @@ export class TaskController {
   }
 
   @Get('my')
-  findMyTasks() {
-    return this.taskService.findMyTasks(1);
+  findMyTasks(@CurrentUserId() userId: any) {
+    return this.taskService.findMyTasks(userId.id);
   }
 
   @Public()
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.taskService.findOne(id, 1);
+    return this.taskService.findOne(id);
   }
 
   @Patch(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateTaskDto,
+    @CurrentUserId() userId: any,
   ) {
-    return this.taskService.update(id, 1, dto);
+    return this.taskService.update(id, userId.id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.taskService.remove(id, 1);
+  remove(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUserId() userId: any,
+  ) {
+    return this.taskService.remove(id, userId.id);
   }
 }

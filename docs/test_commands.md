@@ -1,14 +1,18 @@
-# User Module
+# Auth Module
 
 # Registration Test
-curl -X POST http://localhost:3000/user/register \
+curl -X POST http://localhost:3000/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"test@test.com","password":"1234567890"}'
 
 # Login Test
-curl -X POST http://localhost:3000/user/login \
+curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"test@test.com","password":"1234567890"}'
+
+------------------------------
+
+# User Module
 
 # Find user by email
 curl -X GET http://localhost:3000/user/email/test1@test.com

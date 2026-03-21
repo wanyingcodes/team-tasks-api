@@ -2,14 +2,15 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestj
 import { CommentService } from './comment.service';
 import { CreateCommentDto } from './comment.dto/create.comment.dto';
 import { Public } from '../auth/decorators/public.decorator';
+import { CurrentUserId } from '../auth/decorators/current.user.decorator';
 
 @Controller('comment')
 export class CommentController {
   constructor(private commentService: CommentService) {}
 
   @Post()
-  createcomment(@Body() dto: CreateCommentDto) {
-    return this.commentService.create(1, dto);
+  createcomment(@Body() dto: CreateCommentDto, @CurrentUserId() currentUser: any) {
+    return this.commentService.create(currentUser.id, dto);
   }
 
   @Public()
@@ -19,7 +20,10 @@ export class CommentController {
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.commentService.remove(id, 1);
+  remove(
+    @Param('id', ParseIntPipe) id: number,
+    @CurrentUserId() currentUser: any,
+  ) {
+    return this.commentService.remove(id, currentUser.id);
   }
 }
