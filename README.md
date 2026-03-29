@@ -1,12 +1,12 @@
-Team Task Management System
+# Team Task Management System
 
-Description
+## Description
 
 A backend system for managing team tasks, projects, and collaboration.
 It provides user authentication, project organization, task assignment, and comment-based collaboration, 
 designed for small team workflow management.
 
-Features
+## Features
 
 User authentication (JWT-based)
 User management
@@ -15,14 +15,14 @@ Task management
 Comment management
 Integration testing support
 
-Roadmap
+## Roadmap
 
 Pagination & filtering
 Global error handling & interceptors
 Dockerization
 Deployment
 
-Tech Stack
+## Tech Stack
 
 TypeScript
 NestJS (Node.js)
@@ -30,50 +30,59 @@ Prisma (ORM)
 PostgreSQL
 JWT Authentication
 
-See package.json for full dependencies.
+See [package.json](./package.json) for full dependencies.
 
-Getting Started
+## Getting Started
 
-Installation
+### Installation
 
+```bash
 git clone git@github.com:wanyingcodes/team-tasks-api.git
 cd team-tasks-api
 npm install
+```
 
-Environment Variables
+### Environment Variables
 
 Create a .env file and configure the required variables:
 
+```bash
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
 JWT_SECRET="your-secret-key"
 PORT=3000
+```
 
-You can also copy from .env.example
+You can also copy from [.env.example](./.env.example)
 
-Run (Development)
+### Run (Development)
 
+```bash
 npm run start:dev
+```
 
-Testing
+## Testing
 
-Option 1: Manual Testing
+### Option 1: Manual Testing
 
-Try commands in file docs/test_commands after starting the server.
+Try commands in file [test_commands](./docs/test_commands.md) after starting the server.
 
-Option 2: Integration Test Script
+### Option 2: Integration Test Script
 
-Copy script to root directory:
+```bash
+# Copy script to root directory:
 cp docs/test-integration.sh .
+```
 
-Run test:
+```bash
+# Run test:
 ./test-integration.sh
+```
 
-Architecture
-
-Project Structure
+## Architecture
 
 This project is built on NestJS and employs a modular, layered architecture:
 
+```text
 .
 ├── docs/
 ├── prisma/
@@ -86,44 +95,45 @@ This project is built on NestJS and employs a modular, layered architecture:
 │ └── main.ts
 ├── test/
 └── ...
+```
 
-Core Entities
+## Core Entities
 
-User
+### User
+- id
+- email
+- password
+- name
+- createdAt
+- updatedAt
 
-id
-email
-password
-name
-createdAt / updatedAt
+### Project
+- id
+- name
+- description
+- userId
+- createdAt
+- updatedAt
 
-Project
+### Task
+- id
+- title
+- description
+- status
+- projectId
+- assignedUserId
+- createdAt
+- updatedAt
 
-id
-name
-description
-userId
-createdAt / updatedAt
+### Comment
+- id
+- content
+- taskId
+- userId
+- createdAt
+- updatedAt
 
-Task
-
-id
-title
-description
-status
-projectId
-assignedUserId
-createdAt / updatedAt
-
-Comment
-
-id
-content
-taskId
-userId
-createdAt / updatedAt
-
-Relationships
+### Relationships
 
 A User can create multiple Projects
 A Project contains multiple Tasks
@@ -131,7 +141,7 @@ A Task can be assigned to a User
 A Task can have multiple Comments
 A User can create multiple Comments
 
-Contact
+## Contact
 
 GitHub: https://github.com/wanyingcodes
 Email: wanyingt@hotmail.com
