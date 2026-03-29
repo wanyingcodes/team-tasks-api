@@ -2,32 +2,31 @@
 
 ## Description
 
-A backend system for managing team tasks, projects, and collaboration.
-It provides user authentication, project organization, task assignment, and comment-based collaboration, 
-designed for small team workflow management.
+A backend system for managing team tasks, projects, and collaboration.  
+It provides user authentication, project organization, task assignment, and comment-based collaboration, designed for small team workflow management.
 
 ## Features
 
-User authentication (JWT-based)
-User management
-Project management
-Task management
-Comment management
+User authentication (JWT-based)  
+User management  
+Project management  
+Task management  
+Comment management  
 Integration testing support
 
 ## Roadmap
 
-Pagination & filtering
-Global error handling & interceptors
-Dockerization
-Deployment
+Pagination & filtering  
+Global error handling & interceptors  
+Dockerization  
+Deployment  
 
 ## Tech Stack
 
-TypeScript
-NestJS (Node.js)
-Prisma (ORM)
-PostgreSQL
+TypeScript  
+NestJS (Node.js)  
+Prisma (ORM)  
+PostgreSQL  
 JWT Authentication
 
 See [package.json](./package.json) for full dependencies.
@@ -71,9 +70,7 @@ Try commands in file [test_commands](./docs/test_commands.md) after starting the
 ```bash
 # Copy script to root directory:
 cp docs/test-integration.sh .
-```
 
-```bash
 # Run test:
 ./test-integration.sh
 ```
@@ -97,51 +94,7 @@ This project is built on NestJS and employs a modular, layered architecture:
 └── ...
 ```
 
-## Core Entities
-
-### User
-- id
-- email
-- password
-- name
-- createdAt
-- updatedAt
-
-### Project
-- id
-- name
-- description
-- userId
-- createdAt
-- updatedAt
-
-### Task
-- id
-- title
-- description
-- status
-- projectId
-- assignedUserId
-- createdAt
-- updatedAt
-
-### Comment
-- id
-- content
-- taskId
-- userId
-- createdAt
-- updatedAt
-
-### Relationships
-
-A User can create multiple Projects
-A Project contains multiple Tasks
-A Task can be assigned to a User
-A Task can have multiple Comments
-A User can create multiple Comments
-
 ## Contact
 
-GitHub: https://github.com/wanyingcodes
+GitHub: https://github.com/wanyingcodes  
 Email: wanyingt@hotmail.com
