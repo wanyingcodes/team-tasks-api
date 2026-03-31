@@ -16,24 +16,24 @@ It provides user authentication, project organization, task assignment, and comm
 
 ## 🗺️ Roadmap
 
-Pagination & filtering  
-Global error handling & interceptors  
-Dockerization  
-Deployment  
+- Pagination & filtering  
+- Global error handling & interceptors  
+- Dockerization  
+- Deployment  
 
 ## 🛠 Tech Stack
 
-TypeScript  
-NestJS (Node.js)  
-Prisma (ORM)  
-PostgreSQL  
-JWT Authentication
+- TypeScript  
+- NestJS (Node.js)  
+- Prisma (ORM)  
+- PostgreSQL  
+- JWT Authentication
 
 See [package.json](./package.json) for full dependencies.
 
-## ⚙️ Getting Started
+## 👉 Getting Started
 
-### Installation
+### ⚙️ Installation
 
 ```bash
 git clone git@github.com:wanyingcodes/team-tasks-api.git
@@ -41,7 +41,7 @@ cd team-tasks-api
 npm install
 ```
 
-### Environment Variables
+### 🧩 Environment Variables
 
 Create a .env file and configure the required variables:
 
@@ -53,7 +53,7 @@ PORT=3000
 
 You can also copy from [.env.example](./.env.example)
 
-### Run (Development)
+### ▶️ Run (Development)
 
 ```bash
 npm run start:dev
@@ -94,7 +94,7 @@ This project is built on NestJS and employs a modular, layered architecture:
 └── ...
 ```
 
-## Contact
+## 📬 Contact
 
 GitHub: https://github.com/wanyingcodes  
 Email: wanyingt@hotmail.com
