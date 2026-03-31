@@ -1,27 +1,27 @@
-# Team Task Management System
+# 🚀 Team Tasks API
 
-## Description
+## 📌 Project Overview
 
 A backend system for managing team tasks, projects, and collaboration.  
 It provides user authentication, project organization, task assignment, and comment-based collaboration, designed for small team workflow management.
 
-## Features
+## ✨ Features
 
-User authentication (JWT-based)  
-User management  
-Project management  
-Task management  
-Comment management  
-Integration testing support
+- 🔐 User authentication (JWT-based)
+- 👥 User management
+- 📁 Project management
+- ✅ Task management
+- 💬 Comment system
+- 🧪 Integration testing support
 
-## Roadmap
+## 🗺️ Roadmap
 
 Pagination & filtering  
 Global error handling & interceptors  
 Dockerization  
 Deployment  
 
-## Tech Stack
+## 🛠 Tech Stack
 
 TypeScript  
 NestJS (Node.js)  
@@ -31,7 +31,7 @@ JWT Authentication
 
 See [package.json](./package.json) for full dependencies.
 
-## Getting Started
+## ⚙️ Getting Started
 
 ### Installation
 
@@ -59,7 +59,7 @@ You can also copy from [.env.example](./.env.example)
 npm run start:dev
 ```
 
-## Testing
+## 🧪 Testing
 
 ### Option 1: Manual Testing
 
@@ -75,7 +75,7 @@ cp docs/test-integration.sh .
 ./test-integration.sh
 ```
 
-## Architecture
+## 📁 Project Structure
 
 This project is built on NestJS and employs a modular, layered architecture:
 
