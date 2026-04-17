@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch } from '@nest
 import { UserService } from './user.service';
 import { UpdateUserDto } from './user.dto/user.update.dto';
 import { Public } from '../auth/decorators/public.decorator';
-import { CurrentUserId } from 'src/auth/decorators/current.user.decorator';
+import { CurrentUserId } from '../../modules/auth/decorators/current.user.decorator';
 
 @Controller('user')
 export class UserController {

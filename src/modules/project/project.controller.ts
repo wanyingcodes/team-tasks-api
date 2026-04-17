@@ -2,8 +2,8 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from 
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './project.dto/create.project.dto';
 import { UpdateProjectDto } from './project.dto/update.project.dto';
-import { Public } from '../auth/decorators/public.decorator';
-import { CurrentUserId } from '../auth/decorators/current.user.decorator';
+import { Public } from '../../modules/auth/decorators/public.decorator';
+import { CurrentUserId } from '../../modules/auth/decorators/current.user.decorator';
 
 @Controller('project')
 export class ProjectController {
