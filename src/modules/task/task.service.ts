@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { CreateTaskDto } from './task.dto/create.task.dto';
+import { CreateTaskDto, TaskStatus } from './task.dto/create.task.dto';
 import { UpdateTaskDto } from './task.dto/update.task.dto';
 
 @Injectable()
@@ -12,6 +12,7 @@ export class TaskService {
       data: {
         title: dto.title,
         description: dto.description,
+        status: dto.status,
         projectId: dto.projectId,
         assignedUserId: dto.assignedUserId,
       },
@@ -61,14 +62,14 @@ export class TaskService {
     if (task.project.userId !== userId) {
       throw new NotFoundException('Task not found or you do not have permission');
     }
+    const updateData: any = {};
+    if (dto.title !== undefined) updateData.title = dto.title;
+    if (dto.description !== undefined) updateData.description = dto.description;
+    if (dto.status !== undefined) updateData.status = dto.status;
+    if (dto.assignedUserId !== undefined) updateData.assignedUserId = dto.assignedUserId;
     return this.prisma.task.update({
       where: { id },
-      data: {
-        title: dto.title,
-        description: dto.description,
-        status: dto.status,
-        assignedUserId: dto.assignedUserId,
-      },
+      data: updateData,
     });
   }
 

@@ -1,4 +1,5 @@
-import { IsInt, IsOptional, IsString } from "class-validator";
+import { IsEnum, IsInt, IsOptional, IsString } from "class-validator";
+import { TaskStatus } from "@prisma/client";
 
 export class UpdateTaskDto {
   @IsOptional()
@@ -10,7 +11,8 @@ export class UpdateTaskDto {
   description?: string;
 
   @IsOptional()
-  status?: 'todo' | 'ongoing' | 'done';
+  @IsEnum(TaskStatus)
+  status?: TaskStatus;
 
   @IsOptional()
   @IsInt({ message: 'AssignedUserId must be a number' })
